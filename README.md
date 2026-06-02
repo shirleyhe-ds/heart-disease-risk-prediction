@@ -1,69 +1,174 @@
-# heart-disease-risk-prediction
-Random Forest model to predict heart disease risk using clinical features.
-# eda (exploratory data analysis)
-# these are the packages we will need
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-# removes need to download locally, this is our dataset
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"
-# file lacks column names, but there are the ones specified on source site corresponding to each column
-column_names = [
-    'age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg',
-    'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'target'
-]
-# read in dataset with provided column names, specify that missing values are the '?' values
-df = pd.read_csv(url, names=column_names, na_values="?")
-# convert all numbers 1 to 4 into 1, leave 0's as 0 to become binary absence or presence of heart disease
-df['target'] = df['target'].apply(lambda x: 1 if x > 0 else 0)
-df.head()
-# get broad overview of data - how many missing values, data type of column
-df.info()
-# replace missing values with median of the column
-df[['ca', 'thal']] = df[['ca', 'thal']].fillna(df[['ca', 'thal']].median())
-df.info()
-df.describe()
-# correlation heatmap to show why these features were chosen for analysis
-plt.figure(figsize=(12, 8))
-sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
-plt.title("Correlation Between All Features", fontsize=14)
-plt.tight_layout()
-plt.show()
-# counts - check proportion of target values
-sns.countplot(data=df, x='target')
-plt.title('Distribution of heart disease')
-plt.xticks([0, 1], ['Absent', 'Present'])
-plt.show()
-# use random forest for training
-# !pip show pandas
-# !pip show sci
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report
-# separate features from target
-# create matrix with just features to be used for prediction and leave out
-# target, axis = 1 specifies variable to be dropped was a column
-X = df.drop("target", axis=1)
-# create vector for just the target variable
-y = df["target"]
-# split data: 20 percent for testing and 80 percent for learning
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
-    test_size=0.2,
-    random_state=42
-)
-# number of samples in the training data
-num_samples = X_train.shape[0]
-# calculate good estimate for value to use for max_depth
-max_depth_value = int(np.log2(num_samples))
-# create random forest model
-rf = RandomForestClassifier(
-    n_estimators=100, max_depth= max_depth_value, random_state=42,
-)
-# train random forest
-rf.fit(X_train, y_train)
-# make predictions on the testing data
-y_pred = rf.predict(X_test)
-# print report
-print(classification_report(y_test, y_pred))
+# Heart Disease Risk Prediction
+
+A machine learning project that predicts the likelihood of heart disease using patient clinical and demographic data.
+
+---
+
+## Project Overview
+
+Heart disease is one of the leading causes of death worldwide. Early identification of high-risk patients can help healthcare professionals make more informed decisions and improve patient outcomes.
+
+In this project, we developed a machine learning pipeline to predict heart disease based on patient health indicators. The workflow includes:
+
+- Data Cleaning
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- Machine Learning Model Development
+- Model Evaluation
+
+---
+
+## Objective
+
+Build a predictive model that accurately classifies whether a patient has heart disease based on clinical measurements and demographic information.
+
+---
+
+## Dataset
+
+The dataset contains patient cardiovascular health records, including:
+
+- Age
+- Sex
+- Chest Pain Type
+- Resting Blood Pressure
+- Cholesterol
+- Fasting Blood Sugar
+- Resting ECG Results
+- Maximum Heart Rate
+- Exercise-Induced Angina
+- ST Depression
+- Number of Major Vessels
+- Thalassemia
+
+### Target Variable
+
+| Value | Meaning |
+|---------|---------|
+| 0 | No Heart Disease |
+| 1 | Heart Disease Present |
+
+---
+
+## 🛠️ Technologies Used
+
+### Programming Language
+
+- Python
+
+### Libraries
+
+- pandas
+- NumPy
+- scikit-learn
+- Matplotlib
+- Seaborn
+
+### Machine Learning Model
+
+- Random Forest Classifier
+
+---
+
+## 🔍 Methodology
+
+### 1. Data Preprocessing
+
+- Checked for missing values
+- Cleaned and transformed data
+- Prepared features for model training
+- Performed feature selection
+
+### 2. Exploratory Data Analysis (EDA)
+
+- Analyzed feature distributions
+- Investigated relationships between variables
+- Generated correlation heatmaps
+- Explored trends associated with heart disease
+
+### 3. Model Training
+
+- Split data into training and testing sets
+- Trained a Random Forest Classifier
+- Generated predictions on unseen data
+
+### 4. Model Evaluation
+
+Performance was evaluated using:
+
+- Accuracy
+- Confusion Matrix
+- Classification Report
+- Feature Importance Analysis
+
+---
+
+## Results
+
+### Model Performance
+
+Accuracy: **91%**
+
+### Key Findings
+
+- Several cardiovascular indicators showed strong predictive power.
+- Feature importance analysis identified the most influential health risk factors.
+- The Random Forest model achieved strong performance on unseen data.
+
+---
+
+## Visualizations
+
+### Correlation Heatmap
+
+Add screenshot here:
+
+```markdown
+![Correlation Heatmap](images/correlation_heatmap.png)
+```
+
+### Feature Importance Plot
+
+```markdown
+![Feature Importance](images/feature_importance.png)
+```
+
+### Confusion Matrix
+
+```markdown
+![Confusion Matrix](images/confusion_matrix.png)
+```
+
+---
+
+## Project Structure
+
+```text
+heart-disease-risk-prediction/
+│
+├── DDSC_heartdiseaseml.ipynb
+├── README.md
+└── requirements.txt
+```
+
+---
+
+## Future Improvements
+
+- Compare additional machine learning models
+- Perform hyperparameter tuning
+- Implement cross-validation
+- Deploy as a web application
+- Train on larger healthcare datasets
+
+---
+
+## Disclaimer
+
+This project was created for educational purposes only and should not be used as a medical diagnostic tool.
+
+---
+
+## Author
+
+Chenfei, Shirley, Jocelyn, Carolene, Toyin, Judith
