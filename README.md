@@ -20,7 +20,7 @@ In this project, we developed a machine learning pipeline to predict heart disea
 
 ## Objective
 
-The goal of this project was to explore clinical features associated with heart disease and build a Random Forest classification model. The project also included a Streamlit interface that allowed users to enter clinical information and view a model prediction.
+This project aimed to explore clinical features associated with heart disease and build a Random Forest classification model. The project also included a Streamlit interface that allowed users to enter clinical information and view a model prediction.
 
 ---
 
@@ -109,6 +109,10 @@ Performance was evaluated using:
 
 Accuracy: **91%**
 
+```markdown
+![Accuracy](accuracy.png)
+```
+
 ### Key Findings
 
 - Several cardiovascular indicators showed strong predictive power.
@@ -121,34 +125,14 @@ Accuracy: **91%**
 
 ### Correlation Heatmap
 
-Add screenshot here:
-
 ```markdown
-![Correlation Heatmap](images/correlation_heatmap.png)
+![Correlation Heatmap](correlation_heatmap.png)
 ```
 
-### Feature Importance Plot
+### Target Distribution
 
 ```markdown
-![Feature Importance](images/feature_importance.png)
-```
-
-### Confusion Matrix
-
-```markdown
-![Confusion Matrix](images/confusion_matrix.png)
-```
-
----
-
-## Project Structure
-
-```text
-heart-disease-risk-prediction/
-│
-├── DDSC_heartdiseaseml.ipynb
-├── README.md
-└── requirements.txt
+![Target Distribution](target_distribution.png)
 ```
 
 ---
@@ -163,12 +147,14 @@ heart-disease-risk-prediction/
 
 ---
 
+## My contribution
+
+This was a collaborative group project. I worked with Jocelyn on Random Forest model training and prediction, as documented in the project notebook. Other team members worked on the frontend application.
+
+---
+
 ## Disclaimer
 
 This project was created for educational purposes only and should not be used as a medical diagnostic tool.
 
 ---
-
-## Author
-
-Chenfei, Shirley, Jocelyn, Carolene, Toyin, Judith
