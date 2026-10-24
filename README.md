@@ -109,9 +109,7 @@ Performance was evaluated using:
 
 Accuracy: **91%**
 
-```markdown
 ![Accuracy](accuracy.png)
-```
 
 ### Key Findings
 
@@ -125,15 +123,11 @@ Accuracy: **91%**
 
 ### Correlation Heatmap
 
-```markdown
 ![Correlation Heatmap](correlation_heatmap.png)
-```
 
 ### Target Distribution
 
-```markdown
 ![Target Distribution](target_distribution.png)
-```
 
 ---
 
