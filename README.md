@@ -1,6 +1,6 @@
 # Heart Disease Risk Prediction
 
-A machine learning project that predicts the likelihood of heart disease using patient clinical and demographic data.
+A group project exploring machine learning for heart disease classification using clinical data from UCI Cleveland Heart Disease dataset.
 
 ---
 
@@ -20,7 +20,7 @@ In this project, we developed a machine learning pipeline to predict heart disea
 
 ## Objective
 
-Build a predictive model that accurately classifies whether a patient has heart disease based on clinical measurements and demographic information.
+The goal of this project was to explore clinical features associated with heart disease and build a Random Forest classification model. The project also included a Streamlit interface that allowed users to enter clinical information and view a model prediction.
 
 ---
 
