@@ -109,7 +109,7 @@ Performance was evaluated using:
 
 Accuracy: **91%**
 
-![Accuracy](accuracy.png)
+<img src="accuracy.png" alt="Correlation Heatmap" width="500">
 
 ### Key Findings
 
@@ -123,11 +123,11 @@ Accuracy: **91%**
 
 ### Correlation Heatmap
 
-![Correlation Heatmap](correlation_heatmap.png)
+<img src="correlation_heatmap.png" alt="Correlation Heatmap" width="500">
 
 ### Target Distribution
 
-![Target Distribution](target_distribution.png)
+<img src="target_distribution.png" alt="Correlation Heatmap" width="500">
 
 ---
 
